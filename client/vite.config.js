@@ -19,9 +19,9 @@ export default defineConfig({
     globals: true,
     environment: 'jsdom',
   },
-    build: {
+  build: {
     rollupOptions: {
-      input: './index.html' // Explicitly define entry point
+      //input: './index.html' // Explicitly define entry point
     }
   }
 });
