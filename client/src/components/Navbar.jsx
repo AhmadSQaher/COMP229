@@ -1,27 +1,22 @@
-import { render, screen } from '@testing-library/react';
-import '@testing-library/jest-dom';
-import { MemoryRouter } from 'react-router-dom';
-import Navbar from '../Navbar';
+import { Link } from 'react-router-dom';
+import logo from '../assets/logo.svg';
 
-describe('Navbar component', () => {
-  beforeEach(() => {
-    render(
-      <MemoryRouter>
-        <Navbar />
-      </MemoryRouter>
-    );
-  });
+// Navbar content that provides navigation links to different pages of the portfolio and displays a logo in the top left corner
+const Navbar = () => {
+  return (
+    <nav>
+      <div className="logo">
+        <img src={logo} alt="Logo" />
+      </div>
+      <ul>
+        <li><Link to="/">Home</Link></li>
+        <li><Link to="/about">About Me</Link></li>
+        <li><Link to="/projects">Projects</Link></li>
+        <li><Link to="/services">Services</Link></li>
+        <li><Link to="/contact">Contact Me</Link></li>
+      </ul>
+    </nav>
+  )
+}
 
-  it('renders logo image', () => {
-    const logoImg = screen.getByAltText('Logo');
-    expect(logoImg).toBeInTheDocument();
-  });
-
-  it('renders all navigation links', () => {
-    expect(screen.getByText('Home')).toBeInTheDocument();
-    expect(screen.getByText('About Me')).toBeInTheDocument();
-    expect(screen.getByText('Projects')).toBeInTheDocument();
-    expect(screen.getByText('Services')).toBeInTheDocument();
-    expect(screen.getByText('Contact Me')).toBeInTheDocument();
-  });
-});
+export default Navbar;
